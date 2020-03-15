@@ -1,15 +1,15 @@
 package com.ty.springbootdemo.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
-
 import java.io.Serializable;
-import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * <p>
@@ -17,14 +17,15 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author yuan
- * @since 2020-03-14
+ * @since 2020-03-15
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class TestTable extends Model<TestTable> {
+public class TestTable implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
 
     /**
      * ID
@@ -35,12 +36,7 @@ public class TestTable extends Model<TestTable> {
     /**
      * 创建时间
      */
-    private Date createTime;
+    private LocalDateTime createTime;
 
-
-    @Override
-    protected Serializable pkVal() {
-        return this.id;
-    }
 
 }

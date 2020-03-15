@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author yuan
- * @since 2020-03-14
+ * @since 2020-03-15
  */
 public interface TestTableMapper extends BaseMapper<TestTable> {
 

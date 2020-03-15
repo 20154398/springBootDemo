@@ -1,5 +1,7 @@
 package com.ty.springbootdemo.mysqlGenerator;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
@@ -23,7 +25,7 @@ public class MysqlGenerator {
 
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
-        String projectPath = System.getProperty("user.dir");
+        String projectPath = System.getProperty("user.dir").replace("\\", "/");
         gc.setOutputDir(projectPath + "/src/main/java");
         // TODO 设置用户名
         gc.setAuthor("yuan");
@@ -36,13 +38,14 @@ public class MysqlGenerator {
         gc.setMapperName("%sMapper");
         gc.setXmlName("%sMapper");
         gc.setFileOverride(true);
-        gc.setActiveRecord(true);
+        gc.setActiveRecord(false);
         // XML 二级缓存
         gc.setEnableCache(false);
         // XML ResultMap
         gc.setBaseResultMap(true);
         // XML columList
         gc.setBaseColumnList(false);
+        gc.setIdType(IdType.INPUT);
         mpg.setGlobalConfig(gc);
 
         // TODO 数据源配置

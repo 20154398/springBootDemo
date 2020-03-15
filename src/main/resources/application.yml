@@ -4,11 +4,11 @@ server:
     context-path: /test
 spring:
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/spring_boot_test?serverTimezone=UTC&allowMultiQueries=true&useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://127.0.0.1:3306/spring_boot_test?serverTimezone=Asia/Shanghai&allowMultiQueries=true&useUnicode=true&characterEncoding=utf8
     username: root
     password: password
     driver-class-name: com.mysql.cj.jdbc.Driver
-    # ʹ��druid���ӳ�
+    # 使用druid连接池
     type: com.alibaba.druid.pool.DruidDataSource
   flyway:
     locations: classpath:/db/migration
@@ -17,14 +17,17 @@ spring:
 mybatis-plus:
   mapper-locations: classpath*:mapper/*.xml
   type-aliases-package: com.ty.springbootdemo.entity
+  configuration:
+    # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   global-config:
     db-config:
       id-type: auto
       field-strategy: not_empty
       table-underline: true
       db-type: mysql
-      logic-delete-value: 1 # �߼���ɾ��ֵ(Ĭ��Ϊ 1)
-      logic-not-delete-value: 0 # �߼�δɾ��ֵ(Ĭ��Ϊ 0)
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
 logging:
   level:
     root: info

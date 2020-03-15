@@ -1,17 +1,10 @@
 package com.ty.springbootdemo.controller;
 
-
 import com.ty.springbootdemo.entity.TestTable;
 import com.ty.springbootdemo.service.TestTableService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -20,13 +13,18 @@ import java.util.List;
  * </p>
  *
  * @author yuan
- * @since 2020-03-14
+ * @since 2020-03-15
  */
+
 @RestController
 @RequestMapping("/testController")
 public class TestTableController {
-    @Autowired
-    private TestTableService testTableService;
+
+    private final TestTableService testTableService;
+
+    public TestTableController(TestTableService testTableService) {
+        this.testTableService = testTableService;
+    }
 
     @GetMapping("/testFun")
     public String post() {
@@ -40,6 +38,6 @@ public class TestTableController {
 
     @PostMapping("/insert")
     public boolean insert(String id) {
-        return testTableService.saveOrUpdate(new TestTable().setId(id).setCreateTime(new Date()));
+        return testTableService.saveOrUpdate(new TestTable().setId(id).setCreateTime(LocalDateTime.now()));
     }
 }
