@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MysqlGenerator {
+    private static final String[] creatTableList = {"message_window","message","message_window_user","friend_group","friend","user"};
 
     /**
      * RUN THIS
@@ -37,7 +38,7 @@ public class MysqlGenerator {
         // 自定义文件命名，注意 %s 会自动填充表实体属性！
         gc.setMapperName("%sMapper");
         gc.setXmlName("%sMapper");
-        gc.setFileOverride(true);
+        gc.setFileOverride(false);
         gc.setActiveRecord(false);
         // XML 二级缓存
         gc.setEnableCache(false);
@@ -103,7 +104,7 @@ public class MysqlGenerator {
         // 设置逻辑删除键
         strategy.setLogicDeleteFieldName("deleted");
         // TODO 指定生成的bean的数据库表名
-        strategy.setInclude("test_table");
+        strategy.setInclude(creatTableList);
         //strategy.setSuperEntityColumns("id");
         // 驼峰转连字符
         strategy.setControllerMappingHyphenStyle(true);

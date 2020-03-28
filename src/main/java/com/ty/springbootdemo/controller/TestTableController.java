@@ -38,6 +38,6 @@ public class TestTableController {
 
     @PostMapping("/insert")
     public boolean insert(String id) {
-        return testTableService.saveOrUpdate(new TestTable().setId(id).setCreateTime(LocalDateTime.now()));
+        return testTableService.saveOrUpdate(new TestTable().setId(id));
     }
 }
