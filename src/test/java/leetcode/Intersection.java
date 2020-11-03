@@ -16,7 +16,7 @@ public class Intersection {
     //给定两个数组，编写一个函数来计算它们的交集。
     public int[] intersection(int[] nums1, int[] nums2) {
         if (nums1.length == 0 || nums2.length == 0) return new int[0];
-        Map<Integer, Integer> help = new HashMap<>(((nums1.length + nums2.length) % 16 + 1) * 16);
+        Map<Integer, Integer> help = new HashMap<>(((nums1.length + nums2.length) / 16 + 1) * 16);
         for (int i : nums1) {
             help.put(i, 1);
         }
